@@ -54,6 +54,15 @@ module.exports = (app) => {
             })
     }
 
+    const updateProfile = (req, res) => {
+        const uid = req.params.uid;
+        const newEdits = req.body;
+        userDao.updateProfile(uid, newEdits)
+            .then(status => res.send(status))
+    }
+
+    app.put('/update/:uid', updateProfile)
+
     app.post('/login', login)
     app.post('/logout', logout)
     // we want '/profile' to be a post so we can
@@ -61,15 +70,14 @@ module.exports = (app) => {
     // rather than encoding it in the url
     app.post('/profile', profile)
     app.post('/register', register)
+
+
+
     app.post('/api/users', (req, res) => {
         const newUser = req.body
         userDao.createUser(newUser)
-            .then(actualUser => res.send(actualUser))
+            .then(status => res.sendStatus(200))
     })
-
-
-
-
 
     //ok
     app.delete('/api/users/:userId', (req, res) => {

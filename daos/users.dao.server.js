@@ -19,10 +19,23 @@ const findUserByCredentials =
 const deleteUser = (uid) =>
     userModel.deleteOne({_id: uid})
 
+
+const updateProfile = (uid, newEdits) =>
+    userModel.findOneAndUpdate({_id: uid}, {$set: newEdits}, {upsert: true})
+
+// const updateProfile = (qid) =>{
+//     return userModel.update(
+//         { _id: "jenny"},
+//         {$set: {"pizza": 'pepperoni'}}
+//         )
+// }
+
+
 module.exports = {
     createUser,
     findAllUsers,
     findUserById,
     findUserByCredentials,
-    deleteUser
+    deleteUser,
+    updateProfile
 }

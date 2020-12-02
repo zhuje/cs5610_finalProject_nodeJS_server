@@ -45,6 +45,8 @@ require('./controllers/quizzes.controller.server')(app)
 require('./controllers/questions.controller.server')(app)
 require('./controllers/users.controller.server')(app)
 require('./controllers/session.controller.server')(app)
+require('./controllers/movies.controller.server')(app)
+
 
 app.get('/hello', (req, res) => res.send('hello world!'))
 

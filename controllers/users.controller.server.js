@@ -48,9 +48,16 @@ module.exports = (app) => {
         const password = req.body.password
         userDao.findUserByCredentials(username, password)
             .then(actualUser => {
-                req.session['profile'] = actualUser
-                actualUser.password = '****'
-                res.send(actualUser)
+                if(actualUser) {
+                    req.session['profile'] = actualUser
+                    actualUser.password = '****'
+                    res.send(actualUser)
+                } else {
+                    return res.status(403).send(
+                        {
+                                errorMessage: `User ${username} not found or wrong password.`
+                            })
+                }
             })
     }
 
@@ -115,4 +122,61 @@ module.exports = (app) => {
     app.get('/api/users', (req, res) =>
         userDao.findAllUsers()
             .then(allUsers => res.send(allUsers)))
+
+
+
+
+    // Session -- API for Cookies tutorial
+    app.get('/api/session/set/:name/:value',
+            setSession);
+    app.get('/api/session/get/:name',
+            getSession);
+    app.get('/api/session/get',
+            getSessionAll);
+    app.get('/api/session/reset',
+            resetSession);
+
+    function setSession(req, res) {
+        var name = req.params['name'];
+        var value = req.params['value'];
+        req.session[name] = value;
+        res.send(req.session);
+    }
+
+    function getSession(req, res) {
+        var name = req.params['name'];
+        var value = req.session[name];
+        res.send(value);
+    }
+
+    function getSessionAll(req, res) {
+        res.send(req.session);
+    }
+    function resetSession(req, res) {
+        req.session.destroy();
+        res.send(200);
+    }
+
+// try the following
+// http://localhost:3000/api/session/get
+//     http://localhost:3000/api/session/set/zip/12345
+//         http://localhost:3000/api/session/set/town/lowell
+//             http://localhost:3000/api/session/get/zip
+//                 http://localhost:3000/api/session/get/town
+//                     http://localhost:3000/api/session/get
+//                         http://localhost:3000/api/session/reset
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+

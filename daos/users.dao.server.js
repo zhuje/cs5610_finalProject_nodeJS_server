@@ -6,7 +6,13 @@ const createUser = (user) => {
 const findAllUsers = () => {
     return userModel.find()
 }
-const findUserById = (userId) => {}
+const findUserById = (userId) => {
+    console.log("userId from DAO :" +  userId);
+    const doc = userModel.findOne({ _id: userId})
+    console.log("findUserById DAO: " + doc)
+    return doc;
+}
+
 const findUserByCredentials =
     (username, password) => {
     return userModel.findOne(

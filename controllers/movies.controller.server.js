@@ -10,6 +10,18 @@ module.exports = (app) => {
             })
     }
 
+    const updateMovieDetailsAddUser =  (req, res) => {
+        const mId = req.params.mId;
+        const uId = req.body.uId;
+        console.log("USERSID IS : " + uId);
+        moviesDao.updateMovieDetailsAddUser(mId, uId)
+            .then(actualMovieDetails => {
+                res.send(actualMovieDetails)
+            })
+    }
+
     app.post('/details/:mId', getMovieMatchDetails)
+    app.post('/details/:mId/update', updateMovieDetailsAddUser)
+
 
 }

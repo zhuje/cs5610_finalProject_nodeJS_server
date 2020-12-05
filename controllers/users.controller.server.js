@@ -68,8 +68,17 @@ module.exports = (app) => {
             .then(status => res.send(status))
     }
 
-    app.put('/update/:uid', updateProfile)
 
+    const findUserById = (req, res) => {
+        const uid = req.params.uid;
+        userDao.findUserById(uid)
+            .then(actualUser => res.send(actualUser))
+            // .then(actualUser => console.log(actualUser))
+    }
+
+    app.post('/findUserById/:uid', findUserById)
+
+    app.put('/update/:uid', updateProfile)
     app.post('/login', login)
     app.post('/logout', logout)
     // we want '/profile' to be a post so we can

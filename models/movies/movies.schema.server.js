@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 const moviesSchema = mongoose.Schema({
                                          movieId: String,
                                          usersThatAddedMovie: [String],

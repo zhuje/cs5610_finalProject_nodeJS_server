@@ -64,8 +64,9 @@ module.exports = (app) => {
     const updateProfile = (req, res) => {
         const uid = req.params.uid;
         const newEdits = req.body;
+        console.log('updateProfile uid : ' + uid + ' newEdits : ' + JSON.stringify(newEdits))
         userDao.updateProfile(uid, newEdits)
-            .then(status => res.send(status))
+            .then(actualUser => res.send(actualUser))
     }
 
 

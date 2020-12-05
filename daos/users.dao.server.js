@@ -27,7 +27,11 @@ const deleteUser = (uid) =>
 
 
 const updateProfile = (uid, newEdits) =>
-    userModel.findOneAndUpdate({_id: uid}, {$set: newEdits}, {upsert: true})
+    userModel.findOneAndUpdate(
+        {_id: uid},
+        {$addToSet: newEdits},
+        {upsert: true}
+        )
 
 // const updateProfile = (qid) =>{
 //     return userModel.update(

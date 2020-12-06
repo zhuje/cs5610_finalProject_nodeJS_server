@@ -5,6 +5,7 @@ const userSchema = mongoose.Schema({
     first: String,
     last: String,
     email: String,
-    movies: [String]
+    movies: [String],
+    role: String
 }, {collection: 'users'})
 module.exports = userSchema

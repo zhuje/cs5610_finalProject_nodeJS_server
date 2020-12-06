@@ -17,7 +17,6 @@ app.use(session({
 
 // Mongoose (CLI for mongoDB)
 // connects to a mongo database
-//test comment
 const mongoose = require('mongoose')
 // mongoose.connect('mongodb://localhost:27017/whiteboard-cs56100-sp20',
 //     { useNewUrlParser: true, useUnifiedTopology: true })

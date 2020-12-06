@@ -37,6 +37,19 @@ const updateProfile = (uid, newEdits) =>
             console.log(doc);
         });
 
+// This is for updating the user's info (username/password etc)
+// const updateProfile2 = (uid, newEdits) =>
+//     userModel.findOneAndUpdate(
+//         {_id: uid},
+//         {$set: newEdits},
+//         {upsert: true, new: true},
+//         (err, doc) => {
+//             if (err) {
+//                 console.log("Something wrong when updating data!");
+//             }
+//             console.log(doc);
+//         });
+
 // const updateProfile = (qid) =>{
 //     return userModel.update(
 //         { _id: "jenny"},

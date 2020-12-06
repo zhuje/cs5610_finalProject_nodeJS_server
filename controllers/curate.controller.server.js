@@ -12,7 +12,7 @@ module.exports = (app) => {
         const newList = req.body;
         console.log('new newList : ' + newList);
         curateDao.createCuratedList(newList)
-            .then(actualList => res.send(actualList));
+            .then(status => res.sendStatus(200));
     }
 
     const deleteCuratedList = (req, res) => {

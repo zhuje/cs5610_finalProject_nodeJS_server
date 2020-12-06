@@ -8,16 +8,10 @@ const findAllCuratedLists = () =>
            console.log(doc);
        });
 
-const createCuratedList = (newList) =>
-     curateModel.create(
-         newList,
-         (err, doc) => {
-             if (err) {
-                 console.log("Something wrong when updating data!");
-             }
-             console.log(doc);
-         }
-     );
+const createCuratedList = (newList) => {
+    return curateModel.create(newList)
+}
+
 
 const deleteCuratedList = (listId) =>
     curateModel.deleteOne(

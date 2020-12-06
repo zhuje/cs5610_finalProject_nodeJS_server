@@ -8,11 +8,12 @@ const findAllUsers = () => {
 }
 const findUserById = (userId) => {}
 const findUserByCredentials =
-    (username, password) => {
+    (username, password, role) => {
     return userModel.findOne(
         {
             username: username,
-            password :password
+            password :password,
+            role: role
         })
     }
 

@@ -1,5 +1,6 @@
-// user  data access object  -- allow access to
-// mongoDB
+//This file allows us to expose behavior through URLs
+
+// user  data access object  -- allow access to mongoDB
 const userDao = require('../daos/users.dao.server')
 
 module.exports = (app) => {
@@ -69,7 +70,6 @@ module.exports = (app) => {
     }
 
     app.put('/update/:uid', updateProfile)
-
     app.post('/login', login)
     app.post('/logout', logout)
     // we want '/profile' to be a post so we can
@@ -77,9 +77,6 @@ module.exports = (app) => {
     // rather than encoding it in the url
     app.post('/profile', profile)
     app.post('/register', register)
-
-
-
     app.post('/api/users', (req, res) => {
         const newUser = req.body
         userDao.createUser(newUser)

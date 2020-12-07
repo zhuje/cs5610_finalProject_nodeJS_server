@@ -1,19 +1,23 @@
+//data access objects - design pattern
+//encapsulated database operations dedicated to Users model
+
 const userModel = require('../models/users.model.server')
 
 const createUser = (user) => {
     return userModel.create(user)
 }
+
 const findAllUsers = () => {
     return userModel.find()
 }
 const findUserById = (userId) => {}
 const findUserByCredentials =
-    (username, password, role) => {
+    (username, password) => {
     return userModel.findOne(
         {
             username: username,
-            password :password,
-            role: role
+            password :password
+            // role: role
         })
     }
 

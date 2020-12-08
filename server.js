@@ -1,17 +1,20 @@
 // import the express library
+//followed this tutorial on connecting node app to atlas cluster
+//https://www.mongodb.com/blog/post/quick-start-nodejs-mongodb--how-to-get-connected-to-your-database
+//followed this tutorial for heroku deployment
+// https://developer.mongodb.com/how-to/use-atlas-on-heroku
+
 const express = require('express')
 const app = express()
 const { MongoClient } = require('mongodb');
 const User = require('./models/users.model.server');
 //our atlas cluster uri for mongoDB
-// const MONGO_URI =
-// "mongodb+srv://jeannille:cs5610f20@movie-app-cluster.eqlwa.mongodb.net/movie_match?"
 
-const MONGO_URI = "mongodb+srv://jeannille:cs5610f20@movie-app-cluster.n9z04.mongodb.net/movie_match?retryWrites=true&w=majority";
+// const MONGO_URI = "mongodb+srv://jeannille:cs5610f20@movie-app-cluster.n9z04.mongodb.net/movie_match?retryWrites=true&w=majority";
 
 //update access atlas cluster string, via process.env variable, instead of hardcoded like above
 //heroku has config vars set
-// const uri = process.env.MONGODB_URI;
+const uri = process.env.MONGODB_URI;
 
 // allows http request to be parsed using 'req.body'
 var bodyParser = require('body-parser')
@@ -61,6 +64,7 @@ require('./controllers/questions.controller.server')(app)
 require('./controllers/users.controller.server')(app)
 require('./controllers/session.controller.server')(app)
 require('./controllers/movies.controller.server')(app)
+//commenting this out, don't have jenny's updated branch
 // require('./controllers/curate.controller.server')(app)
 
 app.get('/hello', (req, res) => res.send('hello world!'))

@@ -109,9 +109,9 @@ async function listDatabases(client) {
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
 
-//create user doc
-const newUser = new User({
-                             username: 'TEST_USER_ATLAS', password: 'password'
-                         })
-newUser.save().then(item => console.log(item))
-    .catch(err => console.log(err));
+//successful test to add a User doc to atas cluster movie_match/users collection
+// const newUser = new User({
+//                              username: 'TEST_USER_ATLAS', password: 'password'
+//                          })
+// newUser.save().then(item => console.log(item))
+//     .catch(err => console.log(err));

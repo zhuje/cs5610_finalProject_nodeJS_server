@@ -3,14 +3,18 @@
 
 const userModel = require('../models/users.model.server')
 
+//create() in mongoose = insert() in mongoDB
 const createUser = (user) => {
     return userModel.create(user)
 }
 
+//explicit return since only returning one line of code
 const findAllUsers = () => {
     return userModel.find()
 }
+
 const findUserById = (userId) => {}
+
 const findUserByCredentials =
     (username, password) => {
     return userModel.findOne(

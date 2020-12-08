@@ -1,4 +1,5 @@
 //This file allows us to expose behavior through URLs
+//Controllers get imported in the server
 
 // user  data access object  -- allow access to mongoDB
 const userDao = require('../daos/users.dao.server')
@@ -18,10 +19,11 @@ module.exports = (app) => {
     // 3) ' actualUser.password = '****' --
     const register = (req, res) => {
         const user = req.body
+        //create is same as insert in mongoDB
         userDao.createUser(user)
             .then(actualUser => {
                 req.session['profile'] = actualUser
-                actualUser.password = '****'
+                // actualUser.password = '****'
                 res.send(actualUser)
             })
     }
@@ -51,7 +53,7 @@ module.exports = (app) => {
             .then(actualUser => {
                 if(actualUser) {
                     req.session['profile'] = actualUser
-                    actualUser.password = '****'
+                    // actualUser.password = '****'
                     res.send(actualUser)
                 } else {
                     return res.status(403).send(
@@ -120,7 +122,9 @@ module.exports = (app) => {
         userDao.findAllUsers()
             .then(allUsers => res.send(allUsers)))
 
-
+    // app.get('/api/users', (req, res) =>
+    //     userDao.findAllUsers()
+    //         .then(allUsers => res.json(allUsers)))
 
 
     // Session -- API for Cookies tutorial

@@ -23,13 +23,13 @@ const mongoose = require('mongoose')
 
 // local host -- fetches whatever database is currently running
 // movie_match -- is pointing at the collection within the current database
-mongoose.connect('mongodb://localhost/movie_match',
+mongoose.connect('mongodb://localhost/movie_match', // TODO mongoATLAS
                  { useNewUrlParser: true, useUnifiedTopology: true })
 
 // Allows CORS from a particular URL, or "*" allows all URLs
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin",
-        "http://localhost:4200");
+        "http://localhost:4200"); // TODO ANGULAR HEROKU DEPLOY
 
     res.header("Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept");

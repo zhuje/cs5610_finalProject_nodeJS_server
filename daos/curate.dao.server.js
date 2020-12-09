@@ -8,8 +8,8 @@ const findAllCuratedLists = () =>
            console.log(doc);
        });
 
-const createCuratedList = (newList) => {
-    return curateModel.create(newList)
+const createCuratedList = (movie) => {
+    return curateModel.create(movie)
 }
 
 const deleteCuratedList = (listId) =>
@@ -23,29 +23,29 @@ const deleteCuratedList = (listId) =>
         }
     );
 
-const addMovieToList = (listID, newEdits) =>
-    curateModel.findOneAndUpdate(
-        {_id: listID},
-        {$addToSet: newEdits},
-        {upsert: true, new: true},
-        (err, doc) => {
-            if (err) {
-                console.log("Something wrong when updating data!");
-            }
-            console.log(doc);
-        });
-
-const deleteMovieInList = (listID, newEdits) =>
-    curateModel.findOneAndUpdate(
-        {_id: listID},
-        {$pull: newEdits},
-        { new: true},
-        (err, doc) => {
-            if (err) {
-                console.log("Something wrong when updating data!");
-            }
-            console.log(doc);
-        });
+// const addMovieToList = (listID, newEdits) =>
+//     curateModel.findOneAndUpdate(
+//         {_id: listID},
+//         {$addToSet: newEdits},
+//         {upsert: true, new: true},
+//         (err, doc) => {
+//             if (err) {
+//                 console.log("Something wrong when updating data!");
+//             }
+//             console.log(doc);
+//         });
+//
+// const deleteMovieInList = (listID, newEdits) =>
+//     curateModel.findOneAndUpdate(
+//         {_id: listID},
+//         {$pull: newEdits},
+//         { new: true},
+//         (err, doc) => {
+//             if (err) {
+//                 console.log("Something wrong when updating data!");
+//             }
+//             console.log(doc);
+//         });
 
 
 
@@ -53,6 +53,6 @@ module.exports = {
     findAllCuratedLists,
     createCuratedList,
     deleteCuratedList,
-    addMovieToList,
-    deleteMovieInList
+    // addMovieToList,
+    // deleteMovieInList
 }

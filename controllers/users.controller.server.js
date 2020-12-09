@@ -7,7 +7,7 @@ module.exports = (app) => {
         userDao.createUser(user)
             .then(actualUser => {
                 req.session['profile'] = actualUser
-                actualUser.password = '****'
+                //actualUser.password = '****'
                 res.send(actualUser)
             })
     }
@@ -27,7 +27,7 @@ module.exports = (app) => {
             .then(actualUser => {
                 if(actualUser) {
                     req.session['profile'] = actualUser
-                    actualUser.password = '****'
+                    //actualUser.password = '****'
                     res.send(actualUser)
                 } else {
                     return res.status(403).send(

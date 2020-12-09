@@ -41,14 +41,12 @@ app.use(function(req, res, next) {
 
 // Allows the other components to interact with http requests
 // Called 'endpoints'
-require('./controllers/quizzes.controller.server')(app)
-require('./controllers/questions.controller.server')(app)
 require('./controllers/users.controller.server')(app)
 require('./controllers/session.controller.server')(app)
 require('./controllers/movies.controller.server')(app)
 require('./controllers/curate.controller.server')(app)
 
-app.get('/hello', (req, res) => res.send('hello world!'))
+// app.get('/hello', (req, res) => res.send('hello world!'))
 
 // port the server listens at
 app.listen(3000)

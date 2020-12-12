@@ -20,8 +20,22 @@ module.exports = (app) => {
             })
     }
 
+    const updateMovieDetailsRemoveUser =  (req, res) => {
+        const mId = req.params.mId;
+        const uId = req.body.uId;
+        console.log("updateMovieDetailsRemoveUser **  MovieID IS : " + uId);
+        console.log("updateMovieDetailsRemoveUser **  USERSID IS : " + uId);
+        moviesDao.updateMovieDetailsRemoveUser(mId, uId)
+            .then(actualMovieDetails => {
+                res.send(actualMovieDetails)
+            })
+    }
+
+
+
     app.post('/details/:mId', getMovieMatchDetails)
     app.post('/details/:mId/update', updateMovieDetailsAddUser)
+    app.post('/details/:mId/remove', updateMovieDetailsRemoveUser)
 
 
 }

@@ -95,7 +95,7 @@ mongoose.connect(uri || localDB, { useNewUrlParser: true, useUnifiedTopology: tr
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin",
-               "http://test-deploy-120920-angular-cli.herokuapp.com"); // TODO ANGULAR HEROKU DEPLOY
+               "http://movie-match-angular.herokuapp.com/"); // TODO ANGULAR HEROKU DEPLOY
 
     res.header("Access-Control-Allow-Headers",
                "Origin, X-Requested-With, Content-Type, Accept");

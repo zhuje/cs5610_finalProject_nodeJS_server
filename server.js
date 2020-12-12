@@ -26,6 +26,18 @@ const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/movie_match', // TODO mongoATLAS
                  { useNewUrlParser: true, useUnifiedTopology: true })
 
+// try {
+//     mongoose.connect(
+//         'mongodb+srv://admin:admin@movie-match-cluster.6c1jv.mongodb.net/movie_match?retryWrites=true&w=majority'
+//         ,
+//         {useNewUrlParser: true, useUnifiedTopology: true}, () =>
+//             console.log("connected"));
+// } catch (error) {
+//     console.log("could not connect");
+// }
+
+
+
 // Allows CORS from a particular URL, or "*" allows all URLs
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin",

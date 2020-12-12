@@ -12,13 +12,16 @@ module.exports = (app) => {
             })
     }
 
+
     const profile = (req, res) =>
         res.send(req.session['profile'])
+
 
     const logout = (req, res) => {
         req.session.destroy()
         res.sendStatus(200)
     }
+
 
     const login = (req, res) => {
         const username = req.body.username
@@ -47,6 +50,14 @@ module.exports = (app) => {
             .then(actualUser => res.json(actualUser))
     }
 
+    const deleteMovie = (req,res) => {
+        const uid = req.params.uid;
+        const newEdits = req.body;
+        console.log('deleteMovie uid : ' + uid + ' newEdits : ' + JSON.stringify(newEdits))
+        userDao.deleteMovie(uid, newEdits)
+            .then(actualUser => res.json(actualUser))
+    }
+
     // This is for updating all the other user fields
     const updateProfile2 = (req, res) => {
         const uid = req.params.uid;
@@ -68,6 +79,7 @@ module.exports = (app) => {
 
     app.post('/findUserById/:uid', findUserById)
     app.put('/update/:uid', updateProfile)
+    app.put('/deleteMovie/:uid', deleteMovie)
     app.put('/updateProfile/:uid', updateProfile2)
     app.post('/login', login)
     app.post('/logout', logout)
@@ -75,11 +87,6 @@ module.exports = (app) => {
     app.post('/register', register)
 
 
-
-
-    /*
-           ALL BELOW  TO BE DELETE -- double check they are unnecessary
-     */
 
 
     app.post('/api/users', (req, res) => {

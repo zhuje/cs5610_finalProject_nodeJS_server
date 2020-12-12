@@ -39,6 +39,18 @@ const updateProfile = (uid, newEdits) =>
             console.log(doc);
         });
 
+const deleteMovie = (uid, newEdits) =>
+    userModel.findOneAndUpdate(
+        {_id: uid},
+        {$pull: newEdits},
+        {upsert: true, new: true},
+        (err, doc) => {
+            if (err) {
+                console.log("Something wrong when updating data!");
+            }
+            console.log(doc);
+        });
+
 // This is for updating all the other user fields
 const updateProfile2 = (uid, newEdits) =>
     userModel.findOneAndUpdate(
@@ -59,5 +71,6 @@ module.exports = {
     findUserByCredentials,
     deleteUser,
     updateProfile,
-    updateProfile2
+    updateProfile2,
+    deleteMovie,
 }

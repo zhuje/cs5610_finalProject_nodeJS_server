@@ -9,7 +9,7 @@ This is the backend of the website MovieMatch.
 
 Other Libraries/Frameworks : Mongoose, MongoDB, Express
 
-Components Directory : </n>
+Components Directory : </br>
 controllers : manages incoming requests from the client and routes them to a handler 
 daos (data access object) : takes input from the controller and manipulates the database with commands .find(), .update(), .delete() 
 model : defines an object model and schema to correlate with a database in MongoDB

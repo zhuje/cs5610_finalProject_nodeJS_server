@@ -1,5 +1,10 @@
 # MovieMatch 
 A website to search and save your favorite movies. 
+Implements CRUD operations. 
+Calls a third-party API to obtain movie details and graphics. 
+Database is stored on MongoDB, store user's profile information and list of favorited movies by UUID from third party API. 
+
+Responses to Angular Client: https://github.com/zhuje/cs5610_finalProject_angular_client 
 
 ## View Deployed Website on Heroku
 http://movie-match-angular.herokuapp.com/

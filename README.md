@@ -2,7 +2,7 @@
 A website to search and save your favorite movies. 
 Implements CRUD operations. 
 Calls a third-party API to obtain movie details and graphics. 
-Database is stored on MongoDB, store user's profile information and list of favorited movies by UUID from third party API. 
+Database is stored on MongoDB, which holds user's profile information and list of favorited movies by UUID from third party API. 
 
 Responses to Angular Client: https://github.com/zhuje/cs5610_finalProject_angular_client 
 
